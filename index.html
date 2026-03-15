@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Williams Lawrence — Telecommunication Engineer & Researcher</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<!-- Fade-in animation styles (kept here as they depend on JS class toggling) -->
+<style>
+  .portfolio-card,
+  .tl-item,
+  .award-item,
+  .download-card,
+  .contact-link {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .portfolio-card.visible,
+  .tl-item.visible,
+  .award-item.visible,
+  .download-card.visible,
+  .contact-link.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  /* Active nav link */
+  .nav-links a.active {
+    color: #2ec4b6;
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════
+     NAVIGATION
+════════════════════════════════════════ -->
+<nav>
+  <a class="nav-logo" href="#hero">Williams Lawrence</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#portfolio">Research & Projects</a></li>
+    <li><a href="#cv">Experience</a></li>
+    <li><a href="#downloads">Downloads</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ═══════════════════════════════════════
+     HERO
+════════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+
+  <div class="hero-inner">
+    <!-- Profile Photo -->
+    <div class="hero-photo-wrap">
+      <img
+        class="hero-photo"
+        src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAYGBgYHBgcICAcKCwoLCg8ODAwODxYQERAREBYiFRkVFRkVIh4kHhweJB42KiYmKjY+NDI0PkxERExfWl98fKcBBgYGBgcGBwgIBwoLCgsKDw4MDA4PFhAREBEQFiIVGRUVGRUiHiQeHB4kHjYqJiYqNj40MjQ+TERETF9aX3x8p//CABEIAhMBnQMBIgACEQEDEQH/xAAwAAEAAwEBAQAAAAAAAAAAAAAAAQIDBAUGAQEBAQEBAAAAAAAAAAAAAAAAAQIDBP/aAAwDAQACEAMQAAAC+qAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKlo8HyD6ni+coetzcMHXbgsejt48nv8Aq/G3PvXynrHqgAAAAAAAAAAAAAAAAVn5o38bmqaUpJNZqTWRBImILqDW2Vz0vq/g+k+4eZ6YAAAAAAAAAAAAAAPGOTwmRCIJmARJAJQJmoTFiVRrOMnZ9T8dqv3zxvZQAAAAAAAAAAAADH4v2/mhVmWmoS0XGeq8vE9TbOvFe7C+JX2SeNPocms5TEXMzUX0yHX9n8L6R9kAAAAAAAAAAAAYHx3BpmK2Fenq9Dn24uzS2OlLWmWszKxZNkRaIrTSDg4fbz1n57P3/N3y4xvnbTK59v3fO/RAAAAAAAAAAAClx8Dz+p5hG9Omb9HemvD0QkqUkSBIiJixEwRW0RWmg8nzvb8jrwpaG+f030Ph+4AAAAAAAAAAAAfPfPfW/LS79NO7Ha1prz6SgszAsiwIETBEIsIglAw8v1+HXPzbTt14/Y9tLoAAAAAAAAAAABn8f9p89Lyd/P08+9ImM7TnJpK8sSiVECSailzOdYWQiRS83Ph+hh73Xh7AsAAAAAAAAAAAAeP7HJHi9PJ2c++fH1Uzrg5/Uys4dbZ2de/Fvjp1TlE1rhXBMM9a75006Ok4u+mcvVENZ5fqvn/pOnELAAAAAAAAAAAGenmx5HX5Pfy9Ofby9SU4+jzZquPp83TjyXr6JydOO+O3RW851x8vdxXON+jbpy5NeD00dHkehjr10tnc+n6Py2WsfZOTr1zCgAAAAAAAAAHF2xHx/XHDx9fZ2cPclMt4l46deWs8m19bM41jO7zaZePPozsrXbLWOXvx1MN9rZ1TLbluacm+bX0nq8nX18wWAAAAAAAAAAAcXzX2Xic+vH1c3TjrWYZ0reKrM1IRdbTaZeXPbKyYmUreBeIRPH2cu+fB6fN9NZ2DrwAAAAAAAAAAAAYb1j5/XbLl6aRNc7tNZVleCu5LrMRLjjvCc2tJ1myCoQlqXnXPf3K268AsAAAAAAAAAAAARIw8v1vJ59c62rz7TMWmpi9Dhz68bnSmVFpe3RZvaZzvKumaRCLm/reV73TjqOnIAAAAAAAAAAAAACnje589jpJPPtFq5zWuGF7m1Jiy1qRLNsh0X4sD1KYbzVRc6fQfP/RdOEjeAAAAAAAAAAAAAAHjezwy+ZOWvL0Rwd3JHDfrtqY19TRvx3sGvEj3MWfGw9XO88e7j6s3StudO36HyvV68QsAAAAAAAAAAAAAAEHzc81ufTbn25ZvprF89MrMkvGFbOiM9VaKRW2Max0V4u7WPrLcfZvmAAAAAAAAAAAAAAA830vmE8z1fD9vn382vd5Nz6e3l+hjpotM3nGkGcyIw04bmMqdPTjp01xx09f3/lvo+vm3ZXWwUAAAAAAAAAAApVL1pFzf5f6b5ePG93wfZ5+nfh7aZ342+3H0499/LTXqV8+Je6vFFzvjWdYv6HP046TydPFNeh9V8n9V18sWxm53tma6J55l3Z3WQoAAAAABXFLVztcWhWy1ZqW+f93hl+Q9Pz+rn6fTZ68u2XN256z5Ofrc++XA7srnlnovXPvppnS8MdK8HVy6x7fvcnZ182V85uNF6zS9arozua6c8r0M9JoFAAKUTSlKXN8pzubTEGlokY6ZJbn6qL8jj6/ic+/rbcu/L0aRESxnpFnNl2Uuee+qyszMsZ3zMerh+k6ce7WG+FK60s0tS8qJhaIiy8ktpx1NtOW81updaZxW5VWua2iFzzkzeywvWVrS8JaJ51x+W+r87O/L6/O7OPp6EM7gqTWYpMWSIVK43x1np+l5evr5ds9Oe43pKrTVLeJhWehMtM71W9RpalpbUrkdVMNarpldFL5GWmW1zqi01alqkgjyvU5rnDayXwMva8bl6drVvz71prQhEkJkrTTOzHs5/W1y9GL17eXh7MdmdUGrTBbwQRJUUrahsrMY7c/RWUa5JeVVvlpmme2W1k3paaAlAjDfKyFUk+L7dM9PD22px9dY0jO850suMdFUwbwZexTb0eK1s89c6b4bpKJauiUlFlraEREqnPShMKlejLRGWmdXgiaWzI1y1svMTNImpKotS1UzreLKXrBsxylz5/Rjl34rVty9U1m5j2dl+3momOnnzz1wLa0sLRKySkXrKiIiYmkBFNMk0vWC1L1qtqWitZixtlsTNbTUVmCJACkXqmcaRZNNLlNK3MfH+g+f5enb2MOq5UtTfJhOaV2tYgLYkiQTAtCYqmKVmCcdcU2vSVRNUia2KCy2ud1kSxCBNbICxEiCUJKmCW5t+M7OHDYx06dUjSJVWaqtFhICCSCbUktWUUFjn6MDetegzreDO+WllSS9olZiYliswJiwABEgSKxeEwwvpKvebImSwmCsSJtWSUCYBCSs1g1nO8RW9LGG/MnSrmvRWarlrjtc1Rc0SVWaSoEm1bKAAlILEZaZEaRZICyiRE1KkkoklEgBAiL0I0pJethTm6eJNd66lIiCZiSL11stExLWlqEgm0FkCQTEkkEUtVLBQCYETUia2ExITBIETUtWRUqbWwuV4urmZ7a841BNgnYVQWtRJgLhUgkJkFQqBILBEAoESE2CATATARIVoAJTmCe0uf/EAAL/2gAMAwEAAgADAAAAIQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABHFVaWUQAAAAAAAAAAAAAAAAABIWU08g/+eSAAAAAAAAAAAAAABJf/wD7LKbpPWAAAAAAAAAAAAAABkcKiVeBuE/40UAAAAAAAAAAAADknGOO6lN+1dE0AAAAAAAAAAAACUiNKK7J1Hd5M0gAAAAAAAAAAAAJDf6ZkWI0zwZgAAAAAAAAAAAACWjgTgY5B836oEAAAAAAAAAAAABdIGU0E0f4HoqEAAAAAAAAAAAAMHFyY5xX5A0DBkoAAAAAAAAAAAe1qUFVxHTmiLswoAAAAAAAAAAADPK8sLx5TqV80cAAAAAAAAAAAAAdzTBzxKYUhxQEAAAAAAAAAAAABB5VacfhwwI94AAAAAAAAAAAAAACTFBFVt5ajmcAAAAAAAAAAAAAAAFQuZHTAhFOgAAAAAAAAAAAAAAAR+giMNgWgCgAAAAAAAAAAAAAABXDkvRSkiipcQAAAAAAAAAAAArW/BTZSYO2pqsYA80AAAAAAApv3iDBqF49irN7B++rt0EAAA41Ub0qBqSJX71FsgZJ+py46oEQGRKvXpxBPe9jPuhNsneK+yAr9yXS1bk7HHnTHnASr090TvNlguxeCsGr85DdLw1Q2ZAU7xnDfETj5iOaVbAIeul3skqzNoyzGQ8AjHvypD1q6KyeUlUzRSaiRjRR8hxjy6KwRIyuz5tSe3pc9iTyTSV/vCnOUBTJrLwCSBv5JLxAARzgz/e8tYFgkZ8IAThHqljiBxgjwqSSi76dZVNdOYCS0EVDxSwjTTAZg5zccMOJwN17zz32KKD3zyCB56B4OKH/xAAC/9oADAMBAAIAAwAAABDzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzziXFvc+33zzzzzzzzzzzzzzzzy2PfDyWTDf3TzzzzzzzzzzzzzyguqQfcNHNjdzTzzzzzzzzzzzzyRwkBVtvmjQmcXTzzzzzzzzzzzz+9vw/oCOfa3dvXzzzzzzzzzzyyuB56nULER79293zzzzzzzzzzzxugUbZ5p6iUkMDzzzzzzzzzzzzy6Qwx/8A/o1kOuv8888888888888tUzPlv8A+6qy3PfPPPPPPPPPPPKWes4k6Azrp7lxv/PPPPPPPPPPKMfH8jk+1bXIFLlPPPPPPPPPPPPDbYxJ0tZJlZtyvPPPPPPPPPPPPPHXRBf0q57Oc1PPPPPPPPPPPPPPMTn6Z41j60CvPPPPPPPPPPPPPPC4BVlomnUomfPPPPPPPPPPPPPPKVXnl3DkD81/PPPPPPPPPPPPPPPN5yGaaKk39PPPPPPPPPPPPPPPIGAaTy7Gi4HP/PPPPPPPPPPPOBo5QVJEJD89Bm3ltvPPPPPPILg/+7EuKD6GTk5yZeGBdvPPKduVAvshCmbBZYnKw8IwCEmX/Q2XIq/h5mig+x6Rsh57YqAlQd3DRq3B2gODHFUMMyL4jzVEw+LL7MRqcvgNfF4nkDBUSzTOCebqElM7QQ3gq1F2BHq6UEuRLrCddtZrpYTza2GNOrtUUPCnSSxMKwW3Vrwm/ldmMiemC6sS2C3YJdqjyKqGg9TaeyRFMjgvsE+wMZDHPGlxrPZOfPcFMfPuE2hI1mhdTvNDZ92gFqikabTRP0zvm1voKFbsPhH1D9t4/wD/AOA+AADCAA8Di88Cee+D89cj/8QALBEAAgIBAwMDBAICAwAAAAAAAAECEQMEEDESITAgQVETIjJAQmEFFFJgcf/aAAgBAgEBPwD/ALhX7K8NfpuUVyx58S/kh6zGuLYtbD4Z/uY/hkM+OXEjn9K6Rm1UraiSnKXL9NGPNkg+TFqk+0uwmn+hll9rJP7n4LNLNuNedujLOjl+HTyovzZPxMvI0VL4H1L2LLLLZU1zFlEOzRB+aSuLJjmosjqWv42PL1L8Sa2inZDI0uCWqkvYWSM67UyKMfHlm+mEn8IeecJumxz6o2Qx9cu5DT4qRPDBLsZEUY1ZHFFpWT0mMyYFB9uDG+wtQuyjGxO0n5JK4tfKMkWp0zt0NIU3FkM0vkeZtcslK9oSoWV/I9TL3ZLM5diH40RbUiCqK8usxcZEuOTt0bLaTEyL2YiHBgh15L9l5pK4tEoSgqaGWWSdlpITL2SIpuNIxwUIJefVLgeyFX/AWLHZJY0vwG+4hI0qXf8AQ1a+1MaOltix0LGx4nY8b9z6KfA4uLIo0yqL/Qyw64NDVSojSbFONcHW/g6/6FP+hZIpd0TqT7EYd0jHHpil+jljHronDs2W0KQnCuRySG2zFBspQq+f0tX2kv8AwxNZIf2jLicWVtRixuUiljgOTnNFcFPyqLYoImavlMxT6JJl48iHpvgWlYtMiMIxRnnboxq5oQ0UhxKfgUWxRSKEjIuTUK4jMeVxZDUp8izp+x9VGTN2G7ZgXdCXA123ocRpr0KLYopCQhkET7syx+1oku+yZHLSHkbHIRpo7vblbUOPwUKKW6XbZ8iJGWNoyw7vdbIgjHHpghC3Qz22rdLZi2iVdmqx9Mh+iLNMlPIilTP4+pbcIYtmPdDjRmxfUjRmxZMbfVEssTLZpMH08Vv8mMfC3YtkMe6GPdCZJWOHUqcbNR/j7t41T+CUZRk013RjxyySUYruafQxg1KbtrZj3fo9xvZ8iGP1XRz3NdgUqml34ZpdOsUbf5MRdl+tC5GIfO79TESp9hQsqK9i/BQudlyP8vEhqTd0WPwMQud3z47L8SFycbe/ja9dC3ZDkq936kMR7bP0ewt3uj+J/8QAMBEAAgIBAgMHBAICAwEAAAAAAQIAAxEEIRASMQUTIDAyQVEiQEJxFDNhgRUjUmD/2gAIAQMBAT8A/wDl8GYE244Ex9kBmdPGIVz9j08nMIz54HFUZugMGkuP4GL2bceuBD2Y4/IT/jbvkSzSXV9VMII4Aw7jzwCSAJp9AnKGeJUi+lYB4My3TVWdVl+hYbpvCCNjBD51CHnU4iD6RxxCPBia+sBs8D182sZmnQHEHTwmGZmZq15swjBPnUevE0/SBtoLEz6hAUPvAIRCIeX5hZD0YGc0tOQZaMedWeVwZUdoK3cfAjaMH8sQUFT65Uce8yJYwxjMsqDHZomiU4+qdy9ed8iOdpefqA82peexF+SJ/DqesBlEFXI/KI9prXYbyzV3cx3Mq1Ls2DKs8L8iWXspOImvtEq1JsGD1li7xtExJZnxGGCR5iNyurfBzKrFdAw3BEOe8hrDCWaZM+kRdMoOeUCImIRLFzGoB/ET+EpwQIlASP6xCByy05tc/wCfN7N1PLmpj13WHPewdIRMRBvCscTEEYbRv7BNZf3VWB1bp5yMVYEdQZXathDA+0Q8CMCIMTBJjgHMA4OY7APk+0vtNthY/wCvP0BzzRDBDjEbOf7DO/txtiILC2e8gUYjRzNexGAD1+w7Pb62EBxO8CiNcWPWGxYLV5Z3g9jP5LLjMFocZEZprjl1H2Gns7u0GBgy5EbLKMGCshvqJxK9Np3GzEGfxKB+cs0tQH9hj1Et9BOJXlRgx7MAmXPzuT9jp3s7rPUSq3LAQAMJhh0MLX5mLG6zlC7y+0AzL2hsdID9gTuBOzx/1t+5ehpsBHQyi9WA3meGZqLVVes+q6zAnItdZA+IXKs/7gsU+/mmxRDaZWcss0BwCJfULEIhW2k5i67AGYdeMbRtc3tHtZzNJWVGZecVmWn62i2DMDkQW/MDqfIewLGcnqYWjHAmnf8ArM0j4eA5l1KuJZo2XcGNpmHvO4aU6YZyYBgTVP8ASZY2S2Ipw3DJE5othEVwfAzgRrCYzQkxZafaVbIP3NJZnlMrbIHAgGPTk9YKQIFjGa63Cke5h6f7hG8Xpwzg7jgG36xLfYwMD0MaxmnXrBsITl57RfSIwzFwFmltCsAZQ+wgPA8CRLGmptNlp+BsI5A5RDvAeBUERc4InRoOsL4nMDBGOBF3YngZjaWmBscs7Nv7yvB6rFhzwxHE17Gqhjnc7QsxYAdDCSbCPgwcAeJ6jgDkmdDmZwY/SJBxcZgb5mk1Bot5+o9xNLqablBRgf8AEAgUQrCoE7T1Zu1HKp+hTAd4gy54g8WmcKf1K+kY7TOwMc7RIOJhWKeUxLhWchiCJo+28YW45H/qV2JYgZSCDL7kpQu5wBNZ2s1qslY5VPv78CSIgxxHExvQYuwjQegQxIIeJEInICN4oxsZ2RqihaonbGRO0dadRZgehekOYdjtAvz4BxMf0xY4xF3TgvSDw44ERWKnmBI2xDb8CDmPUwADxng/QfuD4jjKxPRwXpxHhbpEdApBP+oFgHiHExzgAwHAHBPQf3wHEeFvb9zHlCER+g/cUEwmfiYsEJ8be3m2+wnNiGfhFntD4BxPtxPkHg/URfVP/8QAPRAAAgECBAIIBAMHBAIDAAAAAAECAxEEEBIhMUEFEyAyQFFhcSIwQoFSkbEUIzNQYnLBQ4Kh0SSAkuHw/9oACAEBAAE/Av8A1LbSKnSGFp/6ifsT6ZpLhBsl0ri3LaSX2HjMQ2/3r3fAjiKsO7Un+ZHG4mHCq+HmR6Rxcf8AWf6i6Vxf4l+RT6Yq2+KCZR6Qw9TStdpPl/KJ1IxW7sjEdLSi2oQXEqYqtV7820XL75MbLmplznxFxVyl0riIRts/cwvSlOtLTNaX/JJzjCLlJ2SMT0vyor7sq4idXeUrjkNsb8j75XfY4FxPYWWE6Qq0Hu3KHkUqsKsdUHdfyFtJXZ0nj1U/d038PMllxWStlqLnocuB6ZcLZI3eWHr1KUk4SsYLpCNf4Jd/+QdIdIylqo0+HBsci+Sdsr9u+3Yvbgai5CbUrpmBx8K0EpSSqeXjul8V1dNUo8Z/oN7DlnuWsMv29hnI3yuJik+TZgek1UtTqd7hfxletGjSlOXIxOIqYiprmPiPsb9mxYfbubikU5uE4z8mYPEdfRU+fi+mq9oxpfdj2scOxYVOUuQsNU/CLCTFgv6j9igfslLyHgqduB+xR8mPAIngpciVKa4xfYWXDmJmBxVSjVgov4ZNaheKx9eVWvNt7X29hjySbIYab5EMJHmRgkiyLFu3KCfIlhYPkTwklwJU2sr5J7C2sdH1utw0G3eS2ficU7Yes72+BkuOWxp3MPRVxRLfNaKlKMuRVwzXAtYRcT9DoSq9U6duV/E1acalOUHwasV6XVVJw8nlYpR3KUbeBcTFUeZwyR0G4/v/AMW3iulIacZU9bM5EUUozTWxTXgsRFWJbPhlE6E/gz+De/e8/FdOccP/ALizciEI8hIivBV1dWKkN3lE6OhowdFW5eK6Wo68NrXGG4o7EO99ynCy8HUTZWp7N2ZJWbMPT6ytCD+qSRTgoQjBcEreKqw105w/EmjqXC8ZcnZ/YpJbL17VixbtWGi3ZqRTiyojoii54uL5Q3fjMZHTiKnruU92ue+bY6kVzOsQpx8zVDzNUS5fO6RriOcUftFF8zUty6zl3H7Dhva3udEYfRRdX8f+PGdIRtVjP+n9Cns8m7FSUm7K/AcLcI7j1/hFN+txVZ+Yqn/0RncTLmonMm5e45S9harEadXkjXNPdEJKSyn3JEY77eZSgqdOEFyVvGYynrov03Kb3ytfdmmxsh2JWNiMiLENkpjmOZsyFhWHGMhU9PBkXeJUa0Iwsddamrf/AJeLrVFTpyn5IjiVWd916lPG16W0vjj68SPee1vTJvYq1lEdWfOSj+p1/wDXI65N/wARl5e6IsiIaJokbt7K49cOOlEcQ/OB+0P8P5Ea0ZcxMRV7qOjafwup9kdbSvbXG/v4rpWenCS9XYoKyjku8vc5E+BUjO90t/MwGEoVPjlLXLy8jGqksVU6yLtb4bexSnqr0lGCXxIr4bTLVSS9YihfcgLKY4OUrFKnKctNPZc5f9GLw2HpqjG+nVJ6qj3ex+47q/8AkfsKnQhUp7S0m6dpbSXMpNtbiKz4Cc9Ghzen8PIliVDuq5gq3XYeE/E9IU9eEqL7lFd0lUUeJRnGbTXn+gxocTQtWrg/NFaLrW6ySlbnzKcIUZaouz8xTlN96q/9w42d7t+7EhDJFuXmKTj9dT8ys+thpnO6XC/EWESa+K5KvU06I6YL04kaMSNPSIr8hXKvFnQ6/wDE/wB3iWk1YnRdHEuPLkV29RhKdkped+xKn7Do+x1K5iVuBYS3EMkixYdPyNHuKAo54uWnS/cp1LsrL4pGBp9XhaUfT9d/FYyjripc4/oYiNpXMM04wt6j7Ns0hIaGuwi/YxavFe5S76MNh+vxdvpW78ZiKOirbk94lODjXvfZ/Kihoedi3ZxN7JWKNJr4mjB4fqaW/elvLxlaCnD9CP8AEXbbIoSEMkiSdiL7c+/H2MFQdSs5vuQlt7+NZVoSjK67tx9llrCsakXiaxyRtY07uwuyhQ11Yr7EIqMUl46qvgl7DH2ET4FSvKP0katVtStt7jrLjc65eZPEvV8MbohinLkU18O5pH2EYbD01+83v4+r/Dn7EuwsmSG4jjc6qPO7FFfYhBLlnLsQKP8ADh7ePqdyXsPsudhyvc33HsJxJe4tN7mqyI1dtzWh9iJTVoR9vHs5tZcspVEiUr8+ZqiuJ13kjXPzR1j9Ga1ygjrX+FHWQfFDirbM61pkKn/Y848YrzaQv5BilprS9d8kS2RUkx9be6RHrZ8jq5r6WPWvpZf0Z8Vu6/yLvyZ8b+hk1WhvpP3j30lN7WZF7DywS6zELyju/wDH8hx1LVDWlvH9CL3FxJ8yUU2aSNkxNGw1E2Go+RLSipZ8TTqNCTRHgMqTcTouhOFJzl9fD2/kVePUVpwXBK8SMib3IvbJo1NCxE/JjxcvI/a5eR+0s6xsW+UiDeonVjewrSnHn5+xFJRSXD+Qt2IV+vxlafnF2+w1ofndnfgKXxS9xPJocRwvzZ1QoeYo5NkpCqRia3UkU04U6rv9LMDX67Dwl6fyHpSv1WFlbjLYwm2Ij9/0GVNVOVkRmrog9llY0nVnVmgtlPb3KkvJl3wKFLmypK1Of9rOhJ/uWvKRq8fc6ZqXnCBSnbEQ9y5WhqgxkahCpcTRc1Go1IuSmkVat7jlcpQ55VpfAzoSXfQxTFMv4pyNWXS38df2lN/Gn6kXliILicOZCrwI1TrPUdUdax1p1w6jL3I7sjlXex0VK04/kPhknlqYp+FuOZfNHTHfIlN3WUlfYdEcXfgamjWzrRzNRfJJlOOddnRXGPpIfAcv6Wa12LmsU14C45sv2HIg+J0tC8W/JoRQlsLKSJ020Sg/IsblizLGlkYMWUmVToyn+5pesybsSIs027rsXl6Grz27CkKS+a5kpZLLiWJPYpGKim5p8GtycdEnHyKDI5tDSuVIXNEVyLGg0osIsMkzS5zUVxbsYeno6qPl/gfF5JiHlbyIu/YUhP5OobGxyRqRqOOcinxMSvif9pjoWq6vP/BRe5BiyZbKRYsxRLZsmdGUtddz/Av1KfFfc5seUR57cGW9ZfmWl+P80fH5r8i8v6TV5r/JGafPtORcbsXb9B2Ne+SzlwGRRWV3H12/MxlHrKbtx4kHuU2J5XL5MsWLdiRNmCodTSS+pq8vuQRzY8lmxq4mLJiyTceAqkee2Woci8n6f8jXq/zIpLKbI5PgR4ZPJFTgipDijEQ0V5opSE+y+0yTMFQdavd92O7OZDgJ7/fLn2pRIvJkexeI/JD2QskMkREiRFbD7FfFUqS+JinGcYyjwcTG4brINrvR4ECD+TcuNjMHSUMPBeau/uc2XRB9vnlweTI5InKyI7iJCzbGR7DFkzGQu9XuYdWo0V/T/kkjF4fq6mqPdl+pEXyWMwGHjVqOUu7BXIrZC733IaoYnEcbOdyPbXY5EckSd5EeB1jFLUjnm8lm+xIlxFBKK/t/Xci03Z8TEUtdOUfyELKxbO2bQ0dHwtTk/wAUv0OJFbv0Kn8R+5HtP5HIhu8miGzJcc5CF22M1CRLmYunorf3bkSxYsaTQaSxpNBSoOrVUPzfkiKUNKivhQhD7xHJZofaYib+BlLJjJZzIi7bJZKWklZq5Vim7NXTJYSce58S/wCReWVuxYsMoUnTp/1z3fohZfWvdf8AJzFkvkLJiKvdXuQ4ZsXdWcyIvkPsS+JXIE6VOp3kVMNUhvH4l/yJp5W7FDDyvrnG1uCzY3v9hfKfYRU4xFnIh3c5CF8h5PJOz9BznH6URxNZ3WmKFVq+USdCFTfTpl5ocZQlplxLlylSlVfGy5sp0oU+6vvzyeUuGSXbXyJ977EeBbVztlIp/UPNC+avJkqXNCLIr0esp7d5bxIzIpzmoriQioxSXBdipV0bLiLU+Io+Al3zghLOG0pfYecfm2yRwzxUerxE1bndfcw1Hq4b958f+s3ZcWPEUvp+J+goOT1SLeB/1GLf7DlYZIj3n7Dzj4PqVPExqv6Fb7k6tOn3pfbmTx7/ANOn92a8VU41H9tinho89yMUuyvnfXL3O7EScs4d77Dzj4K/IqV58IK0fxeZ1dyNIjAS8JT3nL0bO8xZTId7/aPOPgqkuEecv0LanJiiWLfNfyI7KXrJkFsSqWGciG1R+w814CwyabepciCb3cbeDXZ+t+7JS0r1Ixvxzp99jzXgX3hLtv5b7cdpVJv8TsK8ndiWcdsR/tJeDZzl7fIfzlkxn1terIrsLvp+jJZLwXN/Ifz1lMjvUl/czga0Xyjx+wxEfAPLz+Q/npmovuUeFycyMc4cfsMWbH4NdiXgWJvQQ4i4H//EACsQAAICAQMDAwQDAQEBAAAAAAABESExEEFRYXGBIJGxQKHB0TDh8FDxgP/aAAgBAQABPyH/AOG5JRP/ADkktwjMMRhkySxVbe5UBnaQ5H1ATkZRhPkqF1S5Y7mIbL3j5FJfbSI+WLYqzuFf8h2a0Kb6C/iyt3Ru/sbDXnmG/wAkXu6CbmM1IzU/YgxiX8jz7FkvrQkwhPJ+4bkL7EvuPdMd4FSZqnsyf+HH8UtmUw8ltatvcnlT0siPthDJy4Zs38hysJjRbjIk3Um8wOW1fBszApZm3PsNTcEnhxyJ7pTHwLq3g7+BN/4NHpkJK2J8W78tDXT8ieZe54IkcRU4EydXKH1pyNrIcW0XClixLLyJnqMqC5BvqSFg+BPLaeXfccQbfh2bEWa6r69tJSx6rHm+YIlWCQ2uORqfcTMkOrP2NynMDXG4m3Flt56SWhCoc4QpbhSZnjZHgCxl/cd3DqCXZNbqhX+U3qeq+ua4VWG/0Jm4pjxBLdCk5WyIDDA5KYofbOCfEnZDf/h7f+naKMhlx4OHUa4eBOokUZ7jElSiRKGpxzJd5T6L+sflSY5fBPdSqULCWw6o2/7IJ7OBOYncmJouSz2IJNjMCaGSE3ILknHA8yJ077F9j5CpHUqrZCzOIX5Vk4JLcl9XGe5PBOtlpL8EyJ+BNy0qJRvEmKl1HoZYaTwT5C7piW3qYj2MrDZsQzkt/YDmPwLsX50Jx1kQRKbKR4I8DSvqXSGuXIukM222QgqhoO7ZdxERpIXEJeNECNyCCBHaC/kc9nYkpUMwKkFQWB5W7EePuFfUpcUW+BJa+hFuTfNSKSKRBHE0QiCQkQv4IGhDEjlMWS/2jdoaKNqMsUHSWRWR5D/Z/wB/U5lU3kc1abep7bkMckpKldyRDzFkEEaQR/DBAlrAiV0EYHLHtxmBzKzbx9U/iv7qGhLTonKG9iozsR/JK9N11FyhOoQmGIp6Qrwfj6pfa/ESCCO0sxaf2JlMcz3I03z/ACvSdWAyVQjuIm9hjBE711v6rnh9jyZu0ZJRi00WwjBHC0knSfUyBjHrJCQhQBiTgU/NKQ4lmP1J4+qQ8x7ohpJW1CEaFy0n3IHqkLWQRpBBMj0NaZGdt2JcusLG8IzRU+46X1j3VCqvWo+SUqf8IeiErGEOAoM/sc2HS/BcueBixOSTeMuicZFUtpLkmNe8n7OpK4IEJ7otpKrK/aRc1b44TfWVsrh7p/I22oTQ8n4iL+rY2FLZ1N0hpW0fb7CWF1G8C0fhQ+1ip6HwQHPL1NR32VkiOFj2G0xE5NhYzdi2MtqW66wJA1EkLuBd7JSveOhjYX7Pq5MPuvwIg1h5JtuNxrcUbDRKXUiCEheOnKY1FupCIVHMTikwLpoia7f2M2CWB/gFJMNnKppvtf8AH1bHchKU01L9YPFVKE87jp4ttxw6G3kgCm/A7L4xBookV8llSc9Yk04ZHaVXkTgOENujs8iyU9uGKFOLTeXkj0t2GdY3jtQ57lzm/sZZ9pkJ+qYgtr8vwQjqNRDFVfAYdphxnuq8dhE0l5/UK2qxjWzxIqofXL2c9GVIZexV0QIproxKQo0Jkekwh22xcchh4gCQ8Ic0nileY3o26ZvhmKusuQk7h6OZyRkD5bnJX0usI50tPx9S5UrS+zJJ5ufYXhhtSGAtkew6xtOGQINilhDwPrSMNDd9xFjmNt8FolJKJPkiQotC5HNPyduBClBWxbObENHGzUDYknGPuNyYMVw7ljLnM3OmpA19hI4eBVDwMXe8ey+pcmUpqGQvsmw06RPHa7UPRqST9hxU9p+xCDjLegQWtJBzVkDmwn6DnkUhwbkLeojLHvC+BrvN39UJSq+fyJkTgwkfyZaudFofpKkhDGgQnRC29/1JwECyt9n6y477Px4Em5DX2H6IGNk2JaDhTfSRLYvgT1VlpTI/pGI/6I8fWPCatX3COXh/0MYmIkYxuhlGDStEbLxEohwRpInJDHMfITnDEOU+uQ1Ts7aHvrsWwRgt2yFbCcyqZGk09cN5NCSdUuBiTLaCcqX1rPcBnq7kCCtvGdjDvO6wM0sHhW0ZBM03Jps5JhHE/MjMENjCDj0Yi51vhfXp7kzY9EJo1MiVYdwMnErkdUGdcEVuBhkT7CwtTHokteBI7X6+U65ja2Ji0tjaFjbkutu68ipst8OORZw3+Bq+RgFSg/PZPgXInbjSN0TYhoRAIiE+vwLXUNezGZQeByvcSit+hAlu6LV5DeBbq7yGzD+5A3HhRguQ5lUPI4ryS57F40OBbFv7vMw/4GNJQSdSZH2GkfCJjW83uWJhNnbmWLKDA+yJ6n2j3Dkbf2ji9kQXpd0J8BMk8TNIk0E19yXxPwX/AATrfbHIZV311DAeRQWILBV+R3/wjiUqFtg4nuPhSnKgswnoR7FgckVDtp10UiRmUZNOjH/BeDaMukuBLdMWmvb+iWHZvzqT2I0CbsNm6OxLtopDCG98IWwUJCzShr9ir2otqvDIrBJEoS4/4KkbeEStjtKZQR+yDsNqTN54s5rgUSSsC3Jwj2sOU31OQLXXXfSI1trNIwczt0Hku69sCJe4J91/wbO2fkezulCymoJHBmO5uNJtEuDAlO+m+o4Dho0HeA+EpIJYCElmPAj7Db+QSP69ohm3KztNZ8lkI7Ghoq877EbUsSOVeh8BodY+0ULNktcf0PZ9fAum55Jgi7MDbtxhgkSPf6pCGxMj3D3oKkbYMCry4dMdu4gfdiStWrYnlqPkopipQOtQi6qawPPO43bIsD7GA2XyobyGExoSJQj6VojgG5MjY8pklPpBVkSISsheFEz5FpYSSDe9xtEDWhuxJCjm2ZQ055GpXFCZUTsVMSX7fcY8NCmsFv6X+RJy2u6jSSRMhN9DmiyOYO4kYnRwJvx+ybFoqvN8OVoojSiJJU//AAYJbc9YyctWxVuhrwJllCeVdTbFihi1Z/3IkHf203ljEyNz5GJWa+RnMpIdVlHsMoh2ftK/ZBbu7HuSToxG+/lVsMZLY2l4e7IK3LZA49vsJ7wfJwPbZaCtDCaGhTsaaiVO2yQ0Hw4I+SHECQKAvCn4F5DVpNP5hO7Fqq8Z7F+xZ7A91pWQhsRU2XHHsL6GsokkTHoS/wCFoNZAm9jkz2l/B3PYhtL8F5Y4/YuRjyyiF5/kNMZxvmIxQMT1EnPuNkNOKEbyh9AiYVLkxpaiVsfcoLf1+CPxi3o4ghoz9h4MU170Ww3gf6E+X5/s/wAm0J1lXb9Cuh6ZSOEbiUljxl3PPsIlu3yyTGTKzbRo0N4hXV7EE6Sqj4yQIS6E6lPIiIkShDIgY2hS9DvbPApff5ESCWmdGPZEdMZM5GwxpHDyk+5ntcP9nVHUkfEWnFt8LJ033Dlf5L4gtkr50p1JMh50XaIMBLFlOUIlWzrzaI5UKZXkwaSY0Y9BaRo2gsK334REP1gSP83suBiWhPR5GRWtDbS4xEwNXTtQ7nc+OoihXnqPpQeh9c1EQohWyL0Rle9lkctKbXu0KRtzqXA8aKc6Mb9Ca5GHTWxNuT6hfAiprQnSRO9Nzdo0GxgPY9hq0hHYRJGA0PRvSzFo4HlCxrNDUYbNeE7iFGJ/MgIBX4d2tY2N9RMZAmhsloQbMguWQo9xpSLr9i2OVjtePk29hPRaLBubtGTCGGs20Ta4ECRTFA2JlDGoyzE4Nxthi0wFlhArC+QNHiD9xz3lXvoSGH0kEHcQho5hs4J1edeE/Y0qMUnpVTyyEkZt4oW/QhaJojR5Hg3E6JSYbyWTxpvTzoJ+mPYTo59NbINJRsl7Ivb3LKStSyX4SHfdCipoYUy464OnRBbCNOE03xBLNDEcL96HUTy2/OPwXR9TBDdmQtG0LVZ1MRdsTLE+ohS+CyTEzbTloe2u/oJWl6pGURrPnsPySeGWHb7P2SltT3TpjWhIRA+gQRJFyUZDwSJOE4269Rb9PhjhMx8H/gSGGmzVZHgQ2MwXono5RfkSNDMRpJekcaySSNikUOhSnKyvI0PkQ4FWVrD3XkzJ9t430SBCB5MvrsiFhLOy3yxrzLvqM/35PYw9xL1Rlabm2jMNNh6MDq39hdaSPbo3pI06260bJJEbaNtHJMLd9mYlnuhrIltDf5JNu6w0MZ+VJ90M9X2NcoXYNh1wf/BdRPubtbDZjpBNLSrcUS0rX+WolovQ2Qzj0IenQYBsziJb5l6cj5EUGxmejfRj9Dx6IItewRNKtZ7CrcW0PavyXjyTw5n8CdLbvZci86K/sY2PBGSJYV8trrPo20kWBm+vGjYdCcGdu5AkpnqTQyo5TGejEFg3GbG48+qNCQ2zEpdBUSbBnD6XryPXHe6f6HkY2IXdwTIZ9LXvgaVJPhXAo6PuL07iYtGPR6OX4C6exd9xVJKOff0gxoWBZ0b1XqgQ0ZQns/ceGPHSEu+n4FtS93sH6/w8I2sXH6DIXysSwhKhjeifwLR64E316IlQdCUZlDcKPbsNfRQxNWMbv+BZF6FR7iDOVS3dSE+QngQlgg9DsgS9KGSLRj02LPb5A5h2IJEwyShoaXe0vlad9Er1r+KHJg3ydg2SKFFdkikRXoMXrWqRORj0R/lGSIKeJ0OGajZ/mtK0x02GP+Db0s4XBvnZx24EGRypIERqx+tjGPRiR41Tq4+bTTJPcM5MPvqV+g9UIn08iI0bHpJUJVovSYtPHpYhCDcTrRogbogTryLoIkksLZs9SFg3GPVfxMf690Jar1FqvTIx6MLIpQb7QpoKWjYs8T8WhC3gYxjM6L+BDHk+D8r+FIv4Fox6NMDwNUF3/mRNIdfQ2Pb/ADOlJsSNGPXgXrWjG5uHjVaRrQvVnR6M5NyMdRyQWJ9xrcJlJwMy/wCZNuhY0bHoIWk+laPOiy/Ax7aYG5u/QXo/foYtGPL0Z+BEXsXCof/EACsQAQACAgEEAQQCAwEBAQEAAAEAESExQVFhcYEQQJGhscHwUNHh8TAggP/aAAgBAQABPxD/APhq5Q+IDLl/4xCYNq0S4B1lZERviUF9INLF4P8AaUOKXgq9DW8Qe67ogAhFuJmzd3emM2NwbldYNSqz05UoRHNatoIghq2ydHUEf8OvfCVWBbBqBdxcY47golbKsJUWu+Rz2XcWLLuKcXzUHkEWcYN1czsEVsNVX7gi0iDyZEro5QJjlq7uIPK3alZZQNmV8DzFAEKsr373EEALaXyeameNAPvthnSIzMDr/Bm7TVwEDCXp3X2I8oALwHQLREQijbYaznywWIu46PJNoFhlo0RtLQLGtsYPZF18YXqdyVT3Mx3feDkrbBO9t/eoWzcpbrpERTD+IAyBY0FwUWUz3xiy43OsVd8WZgXatxfI0wzMHjs5bw+KYs2JsR0/4E/tsmgJkXE67lgdiKCiwAgLVh18mpRcfkC8VUuuSl1q8OPsTKAQQ6j0GY2tTSuYoRi9eeWIqNqGtJMdHcWVd8QbhLed8MXkpA77t64hWxlWqqw5uW1phO9RHBwb7Fw75q7SlqtHkuMyjedLsebg3nybVXI7E18hUAeqMCFQqaN+vZIAFqwUS2qlI0BBUWzW7vIWkyeEbmJt0QACbK+I5WRHYu6im7OAhuUTnrfaWmXKejcvYwb1TErHANXmYwjbcsDUUUokzg8YiWZvv+5UhZ3xp4g2a1ZdktfMWuNnEBo2qpwC9RRGXkGQYErc3WHyVuUeEcv0g/XUe2NXIf8AcNsimVDzVMVFtmHlIks6FdsS42Rr7OoE2CGN0HMbVFpQutzKxQ0YwkEkhVg6moy803prvHgqk0BguGaN2Q3CGxzbe1V3lqoaMF1dB1NXCwHOaggaYUwx0xCtSdxWDi4ZRrQCCvbMArPbnpEYaxpxL1BcsjGUCxZoDiu/MePVDZ36yjc9OXAIqJOqi9YImwXenast7RkDGsa95ISCoVPMuqHFF1ZqoGrBbrLMBUWDUbUN1TUMKoKiNrHeA7xKjxf6lWrHLBlT3EwjJi6jpeeJWzeS42CuDEWBhWCAoNCt3tiWarqPMc1worvWCo0bFWG72TgysD0TrGjrJ1dphW6iNcUddU19Wwsx79ZCo6oW27u8caSwdEq41ZS+IlNVyL3uBUKQTByJeXu8Q3Y2VdV1zD3rtyEfJrvGIUBtBy3UXzKwB/aqiQOV/TNwcLc97LiS0OyRlJrwUMN0/MF1FGBEvRekbZW8CoLpsJdspYHntL2KUGS+ZYlw0ZznnJCs3Th0bdSgTSfUsRZTs2W0DRUZzOxW9TAMJVueY3KFNVDIDrcthNYYLaLZi8SsIlpTJli63BYxCpqBgLbDHuY3EcxOOSVxFmk2d44WtOMaiuCEpyCFlwylTNreJSOGcdGWjjO75KiUGDB/thjKO6Uc1vjUe81c4+pE5jwuUTS4RdKVqo2IXwcVXmZZFJowg8RCfFvRKiWhqsYhUsMO95lHFSgg/ABCtwlxqKS7iKxHnG0kzY1YDdbloCl7bl3QkswGjeSWVqgWZ15gnBXF6qu9wL8GwvNf5+pAffhmH7MuVJDsuaK2H4iMpvHdSIsBa2oKIlkbqZ33l7+JSVMoRUDHxZ8NzMYwnOJiNPVRBTN8LhpoqWW1i1KaoK35Y41Mh2zMnt+ZfqWX/aAt4G6mVVAYaiIQB7o/7BXbwFBWbb/UIsmjbbm8wBK+CErtAcfFStxSPmISx5jrUxcDOSCt5reguy78sVBjvLaBaBbHMnW+KHkmO906Jp5+qW4ozsloXTjLUU1QLdOVC35GIdw1QGtEeVuMzd8K+OPggt4lsKl1uYixai9mUl1zMiW3F5guijdmsQywOxKvNavmIC4GxZ5AvtFN4szG9H6pkzY+rvFLZTBPsoVVZmeYK4sFrQtcS1Yr2XjvccO8My1F3UE5fgWwuoEScktcUcQfBMuZ6xgWog6IzjhdYzdZl1CnOcDceY9DkUKSzkv3dGi/qsOKV7VRx2KyjBz25ikKthgWz7qUAxxNWEpU5uLxGwVB9Jb40u47YwbxTmYJHNGONRl5EV3TmsS8Av8AeZlG2wbdwDKo5L8E/VzK19Ap4cq6xkgMrQxnB7lX8UpB6WwEveg5YAGnBDDFtrLQzXG4Wogbx+WUIUve/wAmCBdLkwUKogU0QFqocE1GsBbo5fBDGhcgOCOaZuzEHuFUbqI8i9ylVxmFUu++MxgLLE1/oYiFQCrTqYskRVn1SrUPrNNlddDveYwOmco047CQ5G6mYo8YN2zKw2uhVW4IRa4ie9yuvAy8lzabbgDeVGhTkIKL9nK3fp5IVDJxtNfuResVVqrsJZbXqYXYY6S2OKINsLssm6FuLN0AaXD0sNiqB44maeZ4Os+8gJhlzZlUlosNHMya259DUt0cGv3GUFl8GVK17lwQRdCN2DbnVbjhWKetKv6ukxYLgOmQJGCy9ORnQkOiQBHclIuy5d2K8kcvEBYZbHVQtbydYKDTxdQcWHCQ8BoA3wS+lT2YFgzAEJ0h52p9EHt8l3cV3bB/5AVQEQBAE0sJpA1kCtd7QjNk7Pb1CSt0G+1JMhNAxvvfEtqoq5Up6YPqmBw3toigXJbd63lCDTi5E8Wk2E4LY70SrxHdu+qAhipbd2wbV7SuLpVLR07MIe3xQV1GMaEe2vxcRo0uuWDtB3evFTjxLojMHpSRK4rUzuBLdTtER4hbyyY3zENd7YpXWiIwTAeZxTTGNFlgSWiUq1IzG8Vg6EygNBxgX+dPiqVHdJ3KVzHSvquarHpQ/vCocxVQx+qimpkH9TMeXPn4QQCwSxQxQMy5tiuLDyt3AywYA013rmjYxoC8QSwPIQ6oohY0qeiIrg3gR6f6lqTFDqeJu5jorv3DFBVS0cxt8zcH7cI/GZVf3sXI3tRbsy2Y4w563XFwWuVQVhhGOYCLqptNRMehfxLWYKBgbghvfMbuaVPsoN1mdWLr6m6Ucdh2vtLjBKLsqKZqxJlsLsRdQFD1Acwk92Y0LxuGd7KZjmKsDo2XRc9Zib+ogM1RpgDYOFDcFttIqGcQxYMl/eYYmMQbcsqIsTblpSOlyjBoLTzi6gl6qDQ0yl941cTd8u1B3C4cKIg4Ad1OBR21ZbtmpWJag4SVf17lFcULhzcpm2l+FH1Jnlg4RwkXqUfqVZ9yE5RLrt4OAWtM38xfcG8otF9Yf+xHHHiz9EFbsQxx0MwaABoAhi4qS3T/AMmIhXO2IjCbs3ArF4pceItkYa12Klykq42fq5dWXzOFYKQGldYJhbQeEZ551zMFylXWxBZQUnYtp6v6rM/luVlH7NyzihBHiBtj2G1SAs9/jMUNr76wKpc9pQY/MJUMP4ma8lwqcTIjiUWa5uUOJzqvxbFwSnWpfghC0HWDEphgm+zR/RDw+YFrG7laSBR9UwKbBUYxvzgb2M9JivLzFLgw1xMVSdxA61G9DrHa/ARQKzZKhjrx7lSkawuX0csaKvrXMtb/AEOIY5tAFMDLLgxdbbo6AS9S2ATO4OIuv7uvH6wb1NTpSpSuCp8t0gD4bGXNPMyNXHQ54lIGcy5ZtuK5YviDVDqW84KNONXRLQm64OCON0dsEVdS+vMGbUwHN9ZRmj1MJQE9wolrZuhZ/UphU6/QXx9abINCC6aQNuPlDwMtsyeZXNfMDc/ZuJqNL1zLNsNZe8rI328QLcXg6zIU9sQuLbzqZ4+qgl9OSKjVHeKrX5qA4cRTNZZveYiOGI0OZHS8w3wP3dq91+tEvUgSw8MfHMSoVcF+bg0svSAy+5KQThY8u8ajqvKudgMp0z0Xu5WYlslwRgV5VaqYTPxV74CGLvCef+QeLgGKb6Q83XSKQ37hVps79G5lfD7dnB9eVnT9cVrjKyq3fwaZVVrjcWgzjglYLxMK5aujFw5YFYxn3W3rHSCulguy7hu2AujcbiQcVWu0rnxhzCYMAZwZji4DgKlV5KiuoZYFrSheywhnX+59fQA2U+agtcltNS7rUrm4ZUZM3cM3VcQM7Gq8w+orHKmvEKW6FhrqvySwUBXNDZMVMJiOLP0YFdN4NGesFFpFTSCOdRZOyhOy3R2IdFjFIygdFVyQ6o9cQmxHATY7sZkLQEIiNg66UfXi1BW3QQ1WL1MdeYAnkRirJ5hVfHRwXUAUmw222ahXQVXmXUtUdAZMLML1PwdC4pY3Vp47zSBf/WJLCU9muJdj5Mu9pDFsACsJo3cTN7rurWD6m6c3Bg9SIVXybgx9tJ4RYMP8AAhAA4aYaqbqWX0ZqW1aZjxBmBeQ9qCMMaooao0S6JpYUstsjBQjxG2lzk1iPsS3GTzfHSIFlDDBiguJtDL4SxHpPd9eYne3thdKi2dpnDjcZ7EprWwOcnFMFBjiXReAR95SpjFPa24FH+A3V6irDZmCv5GPQPzNXioww9+YwDVBjG9XMtiK8QvIXPBlM+0peTJtgI2LtutQHk46rUwNGLSzfJMnSDkGaliEsUKgRVLsX21EhYAGkxhWKpqs8RQS0C9b6Q57AHsgALN53WF0eJiN6AL/APAiKEh0CqM5dO1WV62CCs3GwynLjMr6asrvsCWI5Yw4MV5lkscYl0qAq8pCWFtZYI1LYWpfN3carYeIH0vRe8AonOcuxsf4jPIRc03ZdX2iJYlWsF0PeLiujQa1q36hi1sQAYD/AAKEUFr2JuWcH+FWiWG1F8HKn+GVSFkgzlQs/fSYhSlBY1CQFy7qocCBwxaqYgbeUpsvrmBqj7IPl4xjmXoqL5t8FQoCvcQacQltuWrrBuEoq1LbHrxuFoE73D7r0S3A3SqN8+YZrPxJT/gXDR/u8P8A6SqAgETN6evWJ0RtAuK5TMoFFFA1kCuOJmlFTuudZjBqBRq1USm7+8ee5Qo3TMJLElNX+4w2oba9dRQnK0agN+WsBgl2CMA0VBEYKB5pFvwOe6YQF0/XkTj4Mo0cC8MGC21jDusYYPgYdOLlhqOdOioohRrG+61i5TnLf75qdAFw7lULq/xiA4Q28QdKXk03zxUWpLPNsa2uQa48xSUGlYjOJ+xhVVKOcounZJd4lvDxu8wIq2VvqwQjpMSIUkJNBJovqmEIm4Kysr4xeIL3X8pbk4xG1dnEJalNqaG2uGAB6hTwXmE/IWv38EEJDYj3tSNShtRkViNPHbl7XjMCbMppxUWgvbrtiN6tAdT3fEDXcUhzbDOWP7fmYQLLN8tS1DHrWYv5jBdsf7l/6h5W4MNl3LAgzT8QkpgiYfpNkwDEOHMMjcQ+E1fX+eKll5vIY8MQiIRiA2dBo7S3eWxzQvTkqsViLino4xfTPUj2FGubLhU5VVLW4QB1aPS5ibRspuohlu2scxQ8q2cNcdotgUpEXKKGggqjmqz4iU5dRVaYer/5LeosVW7B5FfxUdiIuWq5zjcWH+pKjO6uP3SosIJ0jChEFafoCbUcrAllz8DvHeAJUIFD4vCvNCU1xN136LGMzY7QMGWdYJVJmyOGrm5KGTcFImo4FCuv3ClZlhFVWJYWxe8a8VKVBguZZeNHhqXHRu/CxzYIYOsv1G+Ob7yhVWbQIM6vVY1xRAN+of3Gqh7y23mPGjR8UbjB0FPy/UX+0riUg7bl82c6/jdekg7Je5fs/wApxYdafgsgrpm9S8yuzcUcH/6KEBYMRDceygViKAsXMQOOTwRopaxfHqZC5bi0uv3GWMTh2ONlpb1rmHSyoxXUf4YwMXnPUmCrE66iIwsy3vv6lwFAGraxtnkJQVS5fVzdDbheMnhmXWhlxXeWWAj7NgGYQ8ba3FTNeA5pJ01DKYlVZzeWUglG9pUeqg8qaAsOhjzMWDCbiJUuL1KWnDdwompaBT30hr2CuRmbDu+Bc5JS5/8AgobYbUtrYSCALVwTh+v+UMTFfuR+4WfhL9oEDIQH3f1xOSOYrHMXFoxPcXFQG8v6vExxh/ADKAlkjx/34iN7FVbUUcXeqhgQJkrcTr81EumE8+YAW1xgmhtxx07Zmexic6MSm1xLlmnc0S+hg/SxyDz/AAi2alUktZaGJgRoWpUjgVF9yN8wdP5WDB1yj8mCnXTuH6kLGT0/0GZPv2I/b8TCka4cnk//AC7DAMQyBVosDF2ug6wO3PZfQfzMipNi3T2NHqWheDcaHeKs3ENJujow1gd5y6lAdBiYo/2v+cbCo7qMDyS7XUoHepZChFTbf2l6lrH5FI6rPZOnjHEoMB5qNxaTAE1hg3Mqc7qWzRQ5/wBZGSuB/en8RX5QJvgYOjBTDCpVMoIxvnaOHrXO0XERVxRDrKVw1VrwLnJHF3HjKUgC3iffUAliJ8S8NFCujz2O7EFCPr/QfmJvqWD9qotRMuS/dzFxEtmHfVYNaicJ4m24xDUxGcEbJMAEd1ybuRptC4dP4CQMQsuxvEQApUsLG5cZolms+ImDSy8/C4u8Mt1MtzNUNVDFph0ky6UrYU/bAgxYsylXk/Z/lLHva/czCVDzCgxCVPgqioMV1iWkmS2LdrgxMNR4PMdlw3XFUPK7bzVRYQsWtYH9YIi5cpyp5XllxWYinWBoMEdM488TAJajxKgG6xOWyxEDkt1LXgRrAibE1aBlliAtXSi9yqg8aludjK0qPUxM3cbvtH2ZkiqETvDeoAwJVeaJfhAyRFsB4rUt5i/BiaXODzVEoI5M04a0NM2LyXcLkHmpe4xN2MUi77BUQYthzBt5+U3qBdoJHLBVMXABz5ZkpiYrKucy4S477ptcQarfMItUGFxLVTTUDpmVMuOAdA7KjhMQVJ8l8vXWKhbxmgwWnvZKGJXv5J5XK6uyGtUl5MuSNDUBReYSUFxZYjUa1ywaZCdPoe0RjDd8Muamb6LXwiF9UQlbQjcNrzUGsIoi0pLCxy+4li6lYXKsu1qVUvmOBczWZRK4dvilxisUiiVxENVcogUFiVKN0ylQ4IY94WioAAjuq4msdxs0HY0PuC/QU7L/AIXMOeQeBMrxtnQ69MCAgRREpEwjGyw1Ebm61MawnmCZRcwEYb9ywurjOV4CLBfDRGVgF7178QQhhyn4hvCzAosc+yFBF5XLSkqHjDPemXfqG6i2MrmJshpgjPYiFx2DxMoGjMLN1LA8WwLOU/dLBQxOclHwwhq0fhzUaTMwFTrNoWi2WPaU5S8vvKWiXZXUjlZXaYC0lLXofiUFkf3XEJHR1Vs6QVaAD0XHSCGwUTXkuWJ01BbljM5KZVhSFGg+JZwBmIFhANQndJ+iLmMmSqPuqUXduMeTiFIS9ju36ggxm0w5PIShepexKMcXMk/QmceamLmaY69Q5siJLcOf5YivQ0Sy1pAR6UzMHauMArJM0u1OHlmXdcwmUZlYqs8xYcoMGZAdZmdXULKDrcWxV75qr6Gptbll0FKEby4mQOgMWfp6JLcmi9QunSRQUcCoTqblJqNnEchJVor7wc1wYNJqI3gLiOigOFengNveEFQRu7tyvlmINWSv7aZaLazHIIj7iz3xAEq3uWL1GiXcbSWbJOcuuLmFPFGqg5qXjf2t/wARjD1AxQVWJVizv3Cdd/8AMTd6wbxMiYKzNn7QllPeKtjdzohe8c7iO5YEsJhVbGavaWFJTxp/DZ6gZmDoXAU8UXA8ujH3/YTMXxCOx9pStviY7Hg3mXSGVjkfBHuFmLDoeAhmXkPqNXLJtZQVNA/rL8QRYveHquX2hVRLnCGQxiHMLBncM+k6ZiKitHXEKNS72mZlJ3Md92PVD9zEYlhzLu/Z60Nd4HRET6KvQxwyoN/AteIcE1HkHcoI1uOC3Fb+p1VzEU63E/CAR7Sn2aljtLh/JLnHDh/gYhE9Ok65gVjLKCP3GiFttsPW3KsRLKyjScky46smJUKqmDwODXV/ejMTCl+w8HYxMjEpThuZQTBiVsBecoC4omXKoFowlRvpErMDHqb/AAbqoqdSs3MO43efMfhzN57M/L/yU9EuYbVDuDfE2fqEQEb6JvqMyRVCPbe5wQk2YYXEqFQWoxe0HEZYhEGJvqTIl9IlcnX8wgMaMoFfYxW4aCLHfWGDhCXKlL4ZfGGrENNOKTrJkrC2jtHaDMtvK9zFxE7Fe4Roxz29XQO8QOVlGPEQOZkoHacwwjU2obGCEggYSomE4lDHFIXeoabODZ7YrCtUC9rARjVQzpa5X2w2pSYezC4xhIHgwPSn8xqpVs1JUqw1B+sVEaw7zfXiaCp2jlI/iVbayjMTHDdQXiJfYxLU5Ez0rSwZzk1KioYm3S8bEpDoOXrLdIo5gji5lS+Uh+ZbGzVXezqE5DTUB3muEBCjcyT4ePisXDjtEigIsE3L3xFVwfEyIVTcAncfiUW2F7Bl6MRUUOvilePD6g82Ki8d5Sw7PyPxDLGBaE63TTOTtFbyyo3mXRBFb6y2MfDuc5+ELfMQMGZqSYqdxhORog4N0TIutemxo7WXdHgFngS58Jf1JQZdjDIvZrd3/aAQo6EIWJh5WEY5uHLwSyB1+Mag1EnPwrjWITtCs3qLculw1ArfnMRMDgoS8euMQbjklhjgfLo9Tkby/ZFtnQHE4kuV7wrMDVHETcV4uWCmDxcMcQ/mJj4McQG/cH5ZKm2tRpKmroxzLGxreo7ZCtdqrccn4sHvJxcYWyrarbDVArsgQFZhqu8cyyqZHlhkIpfwjsmRMLgM3Fuz1LqvEGWbbZdNSyxAMn7NUVM0MYgpan5EGBYpG5U12Q81JOcP0iWyrbRHDNEXMsBi5GobLn8ZXxWYlx5xUDBOCOr7S6s6xFvUgi6Wr5Gwe1llMVDRhfqGA6TXKOGBTOkcDXf4DPjpDiXiDnvOs61M1HSkacS0g7EZSqIaZTEdmJ7RAjafupT9XcEiMiWBEg5a30SHJ+PFQ4dybWLUJj4m0pYVhhWI3mpeZrMH8zdDmBqBmBjULxY4ND3iP7Ws1a+KVwbEs100VcBi6gzqUplfHb0ZksIHbioreCHEYMx4ips6xqblulEvi4IhcLB3Phdzi1hNrH3BA1coAvK5mV5l2d8So2B/JNSH42zJCFTmM35wTF7heJtFa/Dq/FZxeIdJsgc1qCHmJV4i7MD/AAcxiau6U3k+B2I7iThLXObcDMUuoCHfZBjewlOsdlTPxcVeIGxMTeoczNqPYwuEq+bZhyq24ISRho+WB/8AEWRahbdQ2lQ1buTlFtY9y8LW4XRLEKAxOAWHM51OPU1PUKqYvUG8XcTK/wBIQA14mKgFvlgrnmXLlxanMQcX8GWYS+/MPMajYvSFIGtwULNWQ43KpbMUB2wX2Y4gBCz9RXMaBV5F92HDRfWLSowKOJzSL9R8TMdIMk5Dv+owrmPSpRc9wz8H1iuNf34gNFt7lk4IRnuWx0wycfAu75nu6mkhy8XDSMWJYxDiVxDrzCaOINN/EGxmUK24e8N6v8dbNYpxe2dBl39+RKXMSMpY03HqKiDmGlmtIWtTmVuAdJ3r43tgGUXMEc0qB9kPzFW8W68E6QWPOYjWI5Rdkfww5DtCpXEouLBsuucyxNXGA2SxlKGIXC1S8ROcHhmZzqyFymX3y/Cojdm283fHxwnul/HVHmN90T+4aZynQYsnw4vvLZn+4fzDfuHEGGOycXadIP7OrNfcAPxBaOfSbCdJa4GppAh8OhjRODzKBgxFuGamj5i+4wW2aPmcvKCMgCxghif/2Q=="
+        alt="Williams Lawrence — profile photo"
+      >
+    </div>
+
+    <!-- Hero Text -->
+    <div class="hero-content">
+      <div class="hero-tag">Open to doctoral opportunities</div>
+
+      <h1>Wireless communications researcher | AI & ML researcher | Data scientist</h1>
+
+      <p class="hero-desc">
+        Telecommunication engineering graduate specialising in 5G/6G wireless communications,
+        radio wave propagation, and machine learning-assisted signal analysis.
+        Based in Ghana, building the future of connected systems.
+      </p>
+
+      <div class="hero-cta">
+        <a href="#contact" class="btn btn-primary">Get in touch</a>
+        <a href="#portfolio" class="btn btn-outline">View my work</a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-number">5+</span>
+          <span class="stat-label">Years research & teaching</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">1st</span>
+          <span class="stat-label">Class Honours, KNUST</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">5G</span>
+          <span class="stat-label">Path loss modelling</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">MPhil</span>
+          <span class="stat-label">Telecom Engineering</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     ABOUT
+════════════════════════════════════════ -->
+<section id="about">
+  <p class="section-label">About me</p>
+  <h2>Engineer by training,<br>researcher by passion.</h2>
+
+  <div class="about-grid">
+    <!-- Bio -->
+    <div class="about-text">
+      <p>
+        I am a research-driven Telecommunication Engineering graduate from the Kwame Nkrumah
+        University of Science and Technology (KNUST), Ghana, with a strong foundation in wireless
+        communications, machine learning, and radio wave propagation modelling.
+      </p>
+      <p>
+        My MPhil research focused on improving path loss models for 5G systems in the Sub-6 GHz
+        spectrum, using the KNUST campus as a real-world testbed. I am particularly passionate
+        about Integrated Sensing and Communication (ISAC), channel modelling, and AI-driven signal
+        analysis — the frontier of beyond-5G/6G networks.
+      </p>
+      <p>
+        Beyond research, I have accumulated several years of teaching and laboratory mentorship
+        experience, having guided students through Digital Signal Processing, MATLAB, and RF
+        instrumentation at KNUST. I attended the World Radiocommunication Conference (WRC-23)
+        in Dubai, connecting with the global wireless community.
+      </p>
+      <div class="interest-chips">
+        <span class="chip">Wireless Communications</span>
+        <span class="chip">5G / Beyond 5G</span>
+        <span class="chip">ISAC</span>
+        <span class="chip">Machine Learning</span>
+        <span class="chip">Channel Modelling</span>
+        <span class="chip">Data Science</span>
+        <span class="chip">AI Governance</span>
+      </div>
+    </div>
+
+    <!-- Skills -->
+    <div class="skills-col">
+      <h3>Skills & Tools</h3>
+
+      <div class="skill-group">
+        <div class="skill-group-label">Programming</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">MATLAB</span>
+          <span class="skill-tag">SQL</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-label">RF & Simulation</div>
+        <div class="skill-tags">
+          <span class="skill-tag">HFSS</span>
+          <span class="skill-tag">Advanced Design System</span>
+          <span class="skill-tag">Linkplanner</span>
+          <span class="skill-tag">VNA / Spectrum Analysers</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-label">Frameworks</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Scikit-learn</span>
+          <span class="skill-tag">TensorFlow</span>
+          <span class="skill-tag">PyTorch</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-label">Libraries</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Pandas</span>
+          <span class="skill-tag">Numpy</span>
+          <span class="skill-tag">SciPy</span>
+          <span class="skill-tag">OpenCV</span>
+          <span class="skill-tag">Keras</span>
+          <span class="skill-tag">SQLAlchemy</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-label">Visualization</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Matplotlib</span>
+          <span class="skill-tag">Seaborn</span>
+          <span class="skill-tag">Plotly</span>
+          <span class="skill-tag">PowerBI</span>
+          <span class="skill-tag">Excel</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-label">Research</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Propagation Modelling</span>
+          <span class="skill-tag">Experimental Design</span>
+          <span class="skill-tag">Technical Writing</span>
+          <span class="skill-tag">Literature Review</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     PORTFOLIO / RESEARCH
+════════════════════════════════════════ -->
+<section id="portfolio">
+  <p class="section-label">Research & Projects</p>
+  <h2>Selected work</h2>
+  <p class="section-intro">
+    From 5G propagation measurements to intelligent systems — a cross-section of my
+    research and engineering projects.
+  </p>
+
+  <div class="portfolio-grid">
+
+    <div class="portfolio-card">
+      <div class="card-type">Publication</div>
+      <span class="card-badge badge-review">Under review</span>
+      <div class="card-title">
+        Improved Path Loss Models for 5G Systems in the Sub-6 GHz Spectrum
+      </div>
+      <div class="card-desc">
+        Empirical analysis using KNUST Campus as a real-world testbed. Developed and validated
+        enhanced propagation models for 5G deployments, contributing novel findings to the
+        channel modelling community.
+      </div>
+      <div class="card-tags">
+        <span class="card-tag">Int. Journal of Antennas and Propagation</span>
+        <span class="card-tag">5G</span>
+        <span class="card-tag">Path Loss</span>
+      </div>
+    </div>
+
+    <div class="portfolio-card">
+      <div class="card-type">MPhil Thesis</div>
+      <span class="card-badge badge-done">Completed</span>
+      <div class="card-title">
+        Radio Wave Propagation &amp; Rain Attenuation in 5G Networks
+      </div>
+      <div class="card-desc">
+        Investigated rain attenuation effects on signal propagation at KNUST. Conducted field
+        measurements using professional RF instrumentation including VNAs, spectrum analysers,
+        and signal generators.
+      </div>
+      <div class="card-tags">
+        <span class="card-tag">KNUST</span>
+        <span class="card-tag">Rain Attenuation</span>
+        <span class="card-tag">Rohde &amp; Schwarz Lab</span>
+      </div>
+    </div>
+
+    <div class="portfolio-card">
+      <div class="card-type">Research Project</div>
+      <span class="card-badge badge-done">Completed</span>
+      <div class="card-title">Intelligent Wheelchair for Differently-Abled Individuals</div>
+      <div class="card-desc">
+        Contributed to an AI-powered mobility assistive device at the Responsible AI Lab, KNUST.
+        Also conducted research on AI governance frameworks as part of the broader lab mandate.
+      </div>
+      <div class="card-tags">
+        <span class="card-tag">AI</span>
+        <span class="card-tag">Assistive Technology</span>
+        <span class="card-tag">AI Governance</span>
+      </div>
+    </div>
+
+    <div class="portfolio-card">
+      <div class="card-type">Bachelor's Project</div>
+      <span class="card-badge badge-done">Completed</span>
+      <div class="card-title">
+        Loan Eligibility Prediction Using Ensemble Machine Learning
+      </div>
+      <div class="card-desc">
+        Built an ensemble model for financial businesses combining Decision Tree, Naïve Bayes,
+        Random Forest, and Logistic Regression as base algorithms — achieving improved prediction
+        accuracy.
+      </div>
+      <div class="card-tags">
+        <span class="card-tag">Python</span>
+        <span class="card-tag">Scikit-Learn</span>
+        <span class="card-tag">Ensemble Methods</span>
+      </div>
+    </div>
+
+    <div class="portfolio-card">
+      <div class="card-type">Antenna Design</div>
+      <span class="card-badge badge-done">Completed</span>
+      <div class="card-title">Yagi-Uda Antenna Simulation &amp; Design</div>
+      <div class="card-desc">
+        Led a team to design and verify a Yagi-Uda antenna, analysing frequency range, gain,
+        and directivity using HFSS electromagnetic simulation software.
+      </div>
+      <div class="card-tags">
+        <span class="card-tag">HFSS</span>
+        <span class="card-tag">Antenna Design</span>
+        <span class="card-tag">Team Lead</span>
+      </div>
+    </div>
+
+    <div class="portfolio-card">
+      <div class="card-type">Spectrum Management</div>
+      <span class="card-badge badge-done">Completed</span>
+      <div class="card-title">
+        Field Investigations — National Communications Authority
+      </div>
+      <div class="card-desc">
+        Conducted spectrum management field investigations, frequency band analysis, signal
+        strength evaluation of radio &amp; TV broadcasts, and comparative data analysis on
+        frequency fee scheduling.
+      </div>
+      <div class="card-tags">
+        <span class="card-tag">NCA Ghana</span>
+        <span class="card-tag">Spectrum Management</span>
+        <span class="card-tag">Signal Analysis</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     CV / TIMELINE
+════════════════════════════════════════ -->
+<section id="cv">
+  <p class="section-label">Curriculum Vitae</p>
+  <h2>Experience &amp; Education</h2>
+
+  <div class="cv-cols">
+
+    <!-- Left: Roles -->
+    <div>
+      <div class="cv-section-title">Roles &amp; Experience</div>
+      <div class="timeline">
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-date">Nov 2024 – Present</div>
+            <div class="tl-role">Research Assistant</div>
+            <div class="tl-org">Rohde &amp; Schwarz RF Lab, KNUST</div>
+            <div class="tl-desc">Radio wave propagation modelling for 5G networks; rain
+              attenuation research; tutoring students on VNAs, spectrum analysers, and
+              signal generators.</div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-date">Jan 2025 – Oct 2025</div>
+            <div class="tl-role">Graduate Assistant</div>
+            <div class="tl-org">Dept. of Telecommunication Engineering, KNUST</div>
+            <div class="tl-desc">Teaching, mentoring, script marking; conducting MATLAB
+              and Linkplanner practical sessions.</div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-date">Oct 2023 – Dec 2024</div>
+            <div class="tl-role">Research Assistant</div>
+            <div class="tl-org">Responsible AI Lab, KNUST</div>
+            <div class="tl-desc">AI-powered wheelchair for differently-abled individuals;
+              research on AI governance.</div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-date">Nov 2022 – Oct 2023</div>
+            <div class="tl-role">Teaching Assistant</div>
+            <div class="tl-org">Dept. of Telecommunication Engineering, KNUST</div>
+            <div class="tl-desc">Digital Signal Processing &amp; MATLAB tutorials; project
+              student mentorship; 5G prospects research.</div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-date">Sep – Nov 2024</div>
+            <div class="tl-role">Engineering Intern</div>
+            <div class="tl-org">National Communications Authority, Accra</div>
+            <div class="tl-desc">Spectrum management field investigations; frequency band
+              management; broadcast signal quality analysis.</div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-date">Oct – Dec 2021</div>
+            <div class="tl-role">Network Intern</div>
+            <div class="tl-org">Telecel Ghana, Cape Coast</div>
+            <div class="tl-desc">Fiber-to-home connections, fiber splicing, OTDR drive tests,
+              IP address assignment and antenna access.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Right: Education + Awards -->
+    <div>
+      <div class="cv-section-title">Education</div>
+      <div class="timeline" style="margin-bottom: 3rem;">
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-date">Jan 2024 – Nov 2025</div>
+            <div class="tl-role">Master of Philosophy — Telecommunication Engineering</div>
+            <div class="tl-org">Kwame Nkrumah University of Science and Technology, Kumasi</div>
+            <div class="tl-desc">Research: 5G path loss models, rain attenuation, RF lab
+              instrumentation.</div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-date">Aug 2018 – Sep 2022</div>
+            <div class="tl-role">BSc Telecommunication Engineering — First Class Honours</div>
+            <div class="tl-org">Kwame Nkrumah University of Science and Technology, Kumasi</div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-date">Nov – Dec 2023</div>
+            <div class="tl-role">Conference Delegate</div>
+            <div class="tl-org">World Radiocommunication Conference (WRC-23), Dubai</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="cv-section-title">Awards &amp; Recognition</div>
+      <div class="awards-list">
+
+        <div class="award-item">
+          <div class="award-icon">🏅</div>
+          <div>
+            <div class="award-title">Provost's List — College of Engineering</div>
+            <div class="award-org">KNUST, Jun 2023</div>
+          </div>
+        </div>
+
+        <div class="award-item">
+          <div class="award-icon">🎓</div>
+          <div>
+            <div class="award-title">Practical Neural Networks &amp; Deep Learning Certificate</div>
+            <div class="award-org">Responsible AI Lab, KNUST, Nov 2022</div>
+          </div>
+        </div>
+
+        <div class="award-item">
+          <div class="award-icon">📊</div>
+          <div>
+            <div class="award-title">Ghana Data Science Summit — IndabaX Ghana</div>
+            <div class="award-org">Participation Certificate, Jul 2024</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     DOWNLOADS
+════════════════════════════════════════ -->
+<section id="downloads">
+  <p class="section-label">Documents</p>
+  <h2>Downloads</h2>
+  <p class="section-intro">Access my CV and MPhil thesis directly.</p>
+
+  <div class="download-cards">
+
+    <a class="download-card"
+       href="Williams_Lawrence_Curriculum_Vitae.pdf"
+       download="Williams_Lawrence_CV.pdf">
+      <div class="download-icon">
+        <!-- PDF icon -->
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 2H8C6.9 2 6 2.9 6 4v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v1zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v3zm4-3H19v1h1.5V11H19v2h-1.5V7h3v1.5zM9 9.5h1v-1H9v1zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm10 5.5h1v-3h-1v3z"/>
+        </svg>
+      </div>
+      <div>
+        <div class="download-label">PDF · Curriculum Vitae</div>
+        <div class="download-name">Williams Lawrence — CV</div>
+        <div class="download-meta">Click to download</div>
+      </div>
+    </a>
+
+    <a class="download-card"
+       href="Williams_Lawrence_Master_of_Philosophy_Thesis.pdf"
+       download="Williams_Lawrence_MPhil_Thesis.pdf">
+      <div class="download-icon">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 2H8C6.9 2 6 2.9 6 4v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v1zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v3zm4-3H19v1h1.5V11H19v2h-1.5V7h3v1.5zM9 9.5h1v-1H9v1zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm10 5.5h1v-3h-1v3z"/>
+        </svg>
+      </div>
+      <div>
+        <div class="download-label">PDF · MPhil Thesis</div>
+        <div class="download-name">Williams Lawrence — MPhil Thesis</div>
+        <div class="download-meta">Click to download</div>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     CONTACT
+════════════════════════════════════════ -->
+<section id="contact">
+  <p class="section-label">Contact</p>
+  <h2>Let's connect</h2>
+  <div class="contact-inner">
+    <p class="section-intro">
+      Whether it's a doctoral opportunity, collaboration, or a conversation about 5G, AI,
+      or wireless systems — I'd love to hear from you.
+    </p>
+    <div class="contact-links">
+
+      <a href="mailto:willyhanlawry@gmail.com" class="contact-link">
+        <div class="contact-link-icon">
+          <svg viewBox="0 0 24 24"><path d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </div>
+        <div>
+          <div class="contact-link-label">Email</div>
+          <div class="contact-link-value">willyhanlawry@gmail.com</div>
+        </div>
+      </a>
+
+      <a href="tel:+233552211116" class="contact-link">
+        <div class="contact-link-icon">
+          <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+        </div>
+        <div>
+          <div class="contact-link-label">Phone</div>
+          <div class="contact-link-value">+233 552 211 116 / +233 501 102 674</div>
+        </div>
+      </a>
+
+      <a href="https://www.linkedin.com/in/willaw" target="_blank" rel="noopener" class="contact-link">
+        <div class="contact-link-icon">
+          <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </div>
+        <div>
+          <div class="contact-link-label">LinkedIn</div>
+          <div class="contact-link-value">linkedin.com/in/willaw</div>
+        </div>
+      </a>
+
+      <div class="contact-link" style="cursor:default;">
+        <div class="contact-link-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
+        </div>
+        <div>
+          <div class="contact-link-label">Location</div>
+          <div class="contact-link-value">Saltpond, Ghana</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     FOOTER
+════════════════════════════════════════ -->
+<footer>
+  <span>© 2025 Williams Lawrence</span>
+  <span>Telecommunication Engineer · Researcher · KNUST, Ghana</span>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
